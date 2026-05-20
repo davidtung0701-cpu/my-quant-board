@@ -1,0 +1,27 @@
+name: Run Quant Board Daily
+
+on:
+  schedule:
+    # 23:10 UTC 等於台灣時間 07:10 (週一至週五執行)
+    - cron: '10 23 * * 1-5'
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 簽出程式碼
+      uses: actions/checkout@v3
+
+    - name: 初始化 Python 環境
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: 下載最新量化依賴套件
+      run: |
+        pip install --upgrade pip
+        pip install yfinance pandas requests beautifulsoup4
+
+    - name: 實體擊發量化巡航日報
+      run: python board_make.py
