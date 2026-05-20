@@ -224,7 +224,7 @@ def main():
         print(final_output_text)
 
     # --- 3. 實體發送端 (無縫對接 Make 雲端管線) ---
-    WEBHOOK_URL = "https://hook.us2.make.com/8chtd5ab53nga7phwmc45d8lf2esw5a9"
+    WEBHOOK_URL = "https://hook.us2.make.com/8fsw5gbdaihtpgoyytkj58tjg6n1q4r1"
     try:
         payload = {"text": final_output_text}
         response = requests.post(WEBHOOK_URL, json=payload, timeout=15)
