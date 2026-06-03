@@ -29,12 +29,5 @@ jobs:
 
     - name: 實體擊發量化巡航日報
       env:
-        # 這是前一階段最重要的設定：將 GitHub Secret 注入給 Python 讀取
-        MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
-      run: python board_make.py
-
-    - name: 實體擊發量化巡航日報
-      env:
-        # 這一行超級重要！沒有它，Secret 就不會傳給 Python
         MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
       run: python board_make.py
