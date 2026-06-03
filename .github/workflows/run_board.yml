@@ -1,17 +1,19 @@
 name: Run Quant Board Daily
 
+# 新增此區塊以消除 Node.js 20 棄用警告
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   workflow_dispatch:
   schedule:
-    # UTC 時間 00:30 (等同於台灣時間 08:30)
-    # 執行日為週二至週六 (對應美股週一至週五盤後，以及台股開盤前)
-    - cron: '30 0 * * 2-6'
+    - cron: '30 0 * * 1-6'
+
 jobs:
   run-script:
     runs-on: ubuntu-latest
 
     steps:
-    # 升級至 v4 與 v5，全面對齊 Node 24 核心環境
     - name: 簽出程式碼
       uses: actions/checkout@v4
 
@@ -22,8 +24,14 @@ jobs:
 
     - name: 下載最新量化依賴套件
       run: |
-        pip install --upgrade pip
+        python -m pip install --upgrade pip
         pip install yfinance pandas requests beautifulsoup4
+
+    - name: 實體擊發量化巡航日報
+      env:
+        # 這是前一階段最重要的設定：將 GitHub Secret 注入給 Python 讀取
+        MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+      run: python board_make.py
 
     - name: 實體擊發量化巡航日報
       env:
