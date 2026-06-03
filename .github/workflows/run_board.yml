@@ -26,4 +26,7 @@ jobs:
         pip install yfinance pandas requests beautifulsoup4
 
     - name: 實體擊發量化巡航日報
+      env:
+        # 這一行超級重要！沒有它，Secret 就不會傳給 Python
+        MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
       run: python board_make.py
