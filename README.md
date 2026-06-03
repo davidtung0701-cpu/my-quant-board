@@ -1,8 +1,8 @@
-# 📊 Quant Tactical Dashboard (量化戰術儀表板)
+# Quant Tactical Dashboard (量化戰術儀表板)
 
-An automated, lightweight quantitative market monitoring system. This Python-based dashboard tracks cross-market leading indicators, macroeconomic liquidity, and specific US/TW equities. It calculates moving averages, volatility, and bias (乖離率) to generate actionable tactical alerts, which are then pushed to Telegram via Make.com and GitHub Actions.
+An automated, lightweight quantitative market monitoring system. This Python-based dashboard tracks cross-market leading indicators, macroeconomic liquidity, and specific US/TW equities. It calculates moving averages, volatility, and bias to generate actionable tactical alerts, which are then pushed to Telegram via Make.com and GitHub Actions.
 
-## ✨ Features
+## Features
 * **Cross-Market Monitoring**: Tracks US semiconductors (SOXX, NVDA), memory (MU), liquidity (HYG, 10Y Treasury), and Taiwan equities (009816, 2330).
 * **Automated Risk Control**: Calculates 60-day moving average bias and 5-day volatility to detect overbought conditions or liquidity crunches.
 * **Zero-Maintenance Execution**: Runs entirely in the cloud using GitHub Actions (cron scheduled).
@@ -10,7 +10,7 @@ An automated, lightweight quantitative market monitoring system. This Python-bas
 
 ---
 
-## 🚀 Setup Guide
+## Setup Guide
 
 To set up your own automated pipeline, follow these steps:
 
@@ -54,7 +54,7 @@ Going forward, GitHub Actions will automatically run the script and send you the
 
 ---
 
-## 🛠️ Customization
+## Customization
 
 You can modify the tracked assets by editing the `TICKERS` dictionary in `board_make.py`:
 
