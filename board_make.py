@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 import unicodedata
+import os
 
 # ==========================================
 # 0. 排版工具函數
@@ -224,7 +225,10 @@ def main():
         print(final_output_text)
 
     # --- 3. 實體發送端 (無縫對接 Make 雲端管線) ---
-    WEBHOOK_URL = "https://hook.us2.make.com/8fsw5gbdaihtpgoyytkj58tjg6n1q4r1"
+    WEBHOOK_URL = os.environ.get("MAKE_WEBHOOK_URL")
+
+    if not WEBHOOK_URL:
+        print("⚠️ 錯誤：找不到環境變數 MAKE_WEBHOOK_URL，取消發送。")
     try:
         payload = {"text": final_output_text}
         response = requests.post(WEBHOOK_URL, json=payload, timeout=15)
