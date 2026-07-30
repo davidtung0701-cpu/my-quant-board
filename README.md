@@ -1,4 +1,4 @@
-# Quant Tactical Dashboard (量化戰術儀表板)
+# Quant Tactical Dashboard
 
 An automated, lightweight quantitative market monitoring system. This Python-based dashboard tracks cross-market leading indicators, macroeconomic liquidity, and specific US/TW equities. It calculates moving averages, volatility, and bias to generate actionable tactical alerts, which are then pushed to Telegram via Make.com and GitHub Actions.
 
